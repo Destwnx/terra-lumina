@@ -42,8 +42,10 @@ body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font
 .logo-text{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:700;background:linear-gradient(130deg,var(--amber3),var(--amber),#b34a05);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
 .logo-sub{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted2);}
 
-.cards-outer{width:100%;overflow:hidden;animation:fu .8s .2s ease both;}
-.cards-track{display:flex;gap:1.6rem;padding:1rem 0 1.4rem;justify-content:center;cursor:grab;user-select:none;}
+.cards-outer{width:100%;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch;animation:fu .8s .2s ease both;padding:0 5%;}
+.cards-outer::-webkit-scrollbar{display:none;}
+.cards-outer{scrollbar-width:none;}
+.cards-track{display:flex;gap:1.6rem;padding:1rem 0 1.4rem;min-width:max-content;cursor:grab;user-select:none;}
 .cards-track:active{cursor:grabbing;}
 .pcard{flex-shrink:0;width:clamp(190px,22vw,270px);height:clamp(230px,30vh,330px);background:var(--card);border:1px solid var(--border);border-radius:3px;display:flex;flex-direction:column;justify-content:flex-end;padding:1.7rem 1.5rem;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s ease,border-color .3s,box-shadow .3s;}
 .pcard:hover{transform:translateY(-10px);border-color:var(--amber);box-shadow:0 0 40px rgba(224,124,42,.2),0 20px 50px rgba(0,0,0,.6);}
@@ -191,6 +193,13 @@ body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font
           <div class="pcard-hint">Fay hatları &amp; risk bölgeleri</div>
           <div class="pcard-go">→</div>
         </div>
+        <div class="pcard" onclick="go('mission')">
+          <div class="pcard-num">04</div>
+          <div class="pcard-icon">🎯</div>
+          <div class="pcard-title">Misyonumuz</div>
+          <div class="pcard-hint">Amaç &amp; vizyon</div>
+          <div class="pcard-go">→</div>
+        </div>
       </div>
     </div>
     <div class="swipe-hint">Kaydırarak sayfaları seçin</div>
@@ -256,6 +265,46 @@ body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font
     </div>
   </div>
 
+  <!-- MISSION -->
+  <div class="screen hidden" id="mission">
+    <div class="inner-nav">
+      <span class="inner-logo" onclick="go('selector')">Terra Lumina</span>
+      <button class="back-btn" onclick="go('selector')">← Geri</button>
+    </div>
+    <div class="inner-body">
+      <div class="a a1"><div class="sec-label">Biz Kimiz, Ne İstiyoruz?</div><div class="sec-title">Misyonumuz</div><div class="sec-line"></div></div>
+
+      <div class="qa-item a a2">
+        <div class="qa-q">
+          <div class="qa-qtxt">Bu projenin amacı nedir?</div>
+        </div>
+        <div class="qa-a">
+          <div class="qa-atxt">Projemizin temel amacı <strong>deprem riski taşıyan fay hatlarını göstermek</strong> ve bu riskli fay hatlarına yakın il ve ilçelerdeki vatandaşlarımızı <strong>bilinçlendirmektir.</strong></div>
+        </div>
+      </div>
+
+      <div class="qa-item a a3">
+        <div class="qa-item a a3">
+        <div class="qa-q">
+          <div class="qa-qtxt">Bu projeyi yapma fikri nasıl gelişti?</div>
+        </div>
+        <div class="qa-a">
+          <div class="qa-atxt">Uzun bir süredir heyecanla beklediğimiz <strong>TEKNOFEST</strong> etkinliğinde okulumuzun da katılacağı bilgisini aldık. Azimli ve düzenli çalışma arkadaşlarımızla bir takım oluşturduk ve çalışma sürecimize başladık.</div>
+        </div>
+      </div>
+
+      <div class="qa-item a a4">
+        <div class="qa-q">
+          <div class="qa-qtxt">Bu proje topluma nasıl faydalı olabilir?</div>
+        </div>
+        <div class="qa-a">
+          <div class="qa-atxt"><strong>Toplumumuzun her kesimine ulaşmak ve bilgilendirmek</strong> ilk amacımızdır. Uzun yıllardır yaşanan depremlerin ardından ortaya çıkan olumsuz davranışların bilgi eksikliğinden kaynaklandığını düşünüyoruz. Bu sayede hem bilgi vermeyi hem de toplumun her kesimini bu projeye dahil etmek istiyoruz.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- EQ INFO -->
   <div class="screen hidden" id="eq">
     <div class="inner-nav">
@@ -315,4 +364,4 @@ ct.addEventListener('touchstart',e=>{sx=e.touches[0].pageX;sl=ct.scrollLeft;});
 ct.addEventListener('touchmove',e=>{ct.scrollLeft=sl-(e.touches[0].pageX-sx);});
 </script>
 </body>
-</html>
+  </html>
